@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f2f2f2;
+        height: 100vh;
+      }
+
+      .logo {
+        margin-top: 50px;
+        width: 200px;
+        height: 200px;
+        background-image: url(logo.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .form-container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 500px;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 18px;
+        box-sizing: border-box;
+      }
+
+      .btn {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      .switch-form {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      .active-form {
+        display: block;
+      }
+
+      .inactive-form {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo"></div>
+      <div class="form-container active-form" id="login-form">
+        <h1>Login</h1>
+        <form>
+          <input type="text" class="form-control" placeholder="Username">
+          <input type="password" class="form-control" placeholder="Password">
+          <input type="submit" class="btn" value="Login">
+        </form>
+        <p class="switch-form">
+          Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+        </p>
+      </div>
+      <div class="form-container inactive-form" id="signup-form">
+        <h1>Sign Up</h1>
+        <form>
+          <input type="text" class="form-control" placeholder="Username">
+          <input type="email" class="form-control" placeholder="Email">
+          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Confirm Password">
+          <input type="submit" class="btn" value="Sign Up">
+        </form>
+        <p class="switch-form">
+            Already have an account? <a href="#" id="switch-to-login">Login</a>
+          </p>
+        </div>
+      </div>
+      <script>
+        const loginForm = document.getElementById("login-form");
+        const signupForm = document.getElementById("signup-form");
+        const switchToLogin = document.getElementById("switch-to-login");
+        const switchToSignup = document.getElementById("switch-to-signup");
+  
+        switchToSignup.addEventListener("click", function (event) {
+          event.preventDefault();
+          loginForm.classList.remove("active-form");
+          loginForm.classList.add("inactive-form");
+          signupForm.classList.remove("inactive-form");
+          signupForm.classList.add("active-form");
+        });
+  
+        switchToLogin.addEventListener("click", function (event) {
+          event.preventDefault();
+          signupForm.classList.remove("active-form");
+          signupForm.classList.add("inactive-form");
+          loginForm.classList.remove("inactive-form");
+          loginForm.classList.add("active-form");
+        });
+      </script>
+    </body>
+  </html>
+  
+        
